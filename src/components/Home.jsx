@@ -15,7 +15,7 @@ import About from "./About"
 import Services from "./Services";
 import Choose from "./Choose";
 import Clients from "./Client";
-import MiniService from "../components/MiniService";
+import MiniService from "./MiniService";
 
 const Home = () => {
   const slides = [
