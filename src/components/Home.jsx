@@ -11,8 +11,8 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules"; // Include Au
 import heroImage from "../assets/banner.jpg"; // Replace with your actual image paths
 import heroImage2 from "../assets/aero.jpg";
 import heroImage3 from "../assets/ocean.jpg";
-import About from "./About";
-import Services from "./services";
+import About from "./About"
+import Services from "./Services";
 import Choose from "./Choose";
 import Clients from "./Client";
 import MiniService from "../components/MiniService";
