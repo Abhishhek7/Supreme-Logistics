@@ -105,7 +105,7 @@ const Navbar = () => {
             Product
           </Link>
           <Link
-            to="/about"
+            to="/aboutus"
             className={`block px-6 py-2 text-gray-700 hover:bg-gray-300 transition duration-200 ${
               isActive("/about") ? "bg-blue-500 text-white" : ""
             }`}
