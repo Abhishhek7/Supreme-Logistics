@@ -1,141 +1,210 @@
-import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import React from "react";
+import { motion } from "framer-motion";
+import careerImg from "../assets/career.jpg";
+import cultureImg from "../assets/culture.jpg";
+import benefitsImg from "../assets/benefit.jpg";
 
+const positions = [
+  { title: "Software Engineer", description: "Build tools to revolutionize logistics." },
+  { title: "Logistics Manager", description: "Streamline global supply chains." },
+  { title: "Customer Support", description: "Provide exceptional service to clients." },
+  { title: "Product Manager", description: "Drive innovation in logistics technology." },
+];
 
-const JobCard = ({ title, description, location, requirements, qualifications, benefits }) => {
-  const hoverEffect = useSpring({
-    transform: 'scale(1.05)',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
-    config: { tension: 280, friction: 60 },
-  });
+const benefits = [
+  "Comprehensive health coverage",
+  "Flexible work hours and remote options",
+  "Professional development opportunities",
+  "Generous vacation policy",
+  "Collaborative and inclusive environment",
+];
 
-  return (
-    <animated.div style={hoverEffect} className="bg-white p-8 rounded-lg shadow-lg hover:cursor-pointer">
-      <h3 className="text-2xl font-semibold mb-4">{title}</h3>
-      <p className="text-gray-700 mb-4">{description}</p>
-      <p className="text-gray-600 font-medium mb-4">Location: <span className="text-gray-900">{location}</span></p>
-      
-      <div className="text-gray-600">
-        <h4 className="text-lg font-semibold mb-2">Job Requirements</h4>
-        <ul className="list-disc ml-6 mb-4">
-          {requirements.map((req, index) => (
-            <li key={index}>{req}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="text-gray-600">
-        <h4 className="text-lg font-semibold mb-2">Qualifications</h4>
-        <ul className="list-disc ml-6 mb-4">
-          {qualifications.map((qual, index) => (
-            <li key={index}>{qual}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="text-gray-600">
-        <h4 className="text-lg font-semibold mb-2">Benefits</h4>
-        <ul className="list-disc ml-6">
-          {benefits.map((benefit, index) => (
-            <li key={index}>{benefit}</li>
-          ))}
-        </ul>
-      </div>
-    </animated.div>
-  );
-};
+const CareerCard = ({ content, index, className }) => (
+  <motion.div
+    className={`p-4 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm bg-white dark:bg-gray-900 ${className}`}
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: index * 0.2 }}
+  >
+    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+      {content.title}
+    </h3>
+    <p className="text-gray-600 dark:text-gray-300">{content.description}</p>
+  </motion.div>
+);
 
 const Careers = () => {
-  const jobData = [
-    {
-      title: 'Logistics Coordinator',
-      description: 'Manage logistics operations and ensure smooth delivery services.',
-      location: 'New York',
-      requirements: [
-        'Experience in logistics management',
-        'Strong communication skills',
-        'Attention to detail'
-      ],
-      qualifications: [
-        'Bachelor’s degree in logistics or related field',
-        '2+ years of experience in logistics'
-      ],
-      benefits: [
-        'Health insurance',
-        'Paid time off',
-        '401(k) plan'
-      ]
-    },
-    {
-      title: 'Warehouse Manager',
-      description: 'Oversee warehouse operations and inventory management.',
-      location: 'Los Angeles',
-      requirements: [
-        'Experience in warehouse management',
-        'Ability to lead a team',
-        'Problem-solving skills'
-      ],
-      qualifications: [
-        'Bachelor’s degree or equivalent experience',
-        '5+ years of warehouse experience'
-      ],
-      benefits: [
-        'Health insurance',
-        'Generous vacation time',
-        'Bonus incentives'
-      ]
-    },
-    {
-      title: 'Truck Driver',
-      description: 'Drive trucks and deliver goods across the country.',
-      location: 'Chicago',
-      requirements: [
-        'Valid commercial driver’s license',
-        'Ability to drive long distances',
-        'Good physical health'
-      ],
-      qualifications: [
-        'High school diploma or equivalent',
-        '2+ years of truck driving experience'
-      ],
-      benefits: [
-        'Competitive salary',
-        'Flexible schedule',
-        'Health benefits'
-      ]
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800">
-      {/* Header Section */}
-      <header className="text-center py-20 bg-gradient-to-r from-blue-500 to-blue-800 text-white">
-        <h1 className="text-5xl font-extrabold">Join Our Team</h1>
-        <p className="mt-4 text-xl">We're looking for passionate individuals to help us deliver logistics solutions worldwide!</p>
-      </header>
+    <div className="careers-page">
+      {/* Career Page Banner with Animation */}
+<motion.div
+  className="relative overflow-hidden"
+  style={{
+    backgroundImage: `url(${careerImg})`, // Replace with your Career-related image
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "60vh",
+  }}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1.5 }}
+>
+  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
 
-      {/* Job Listings Section */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-semibold text-center mb-8">Current Job Openings</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {jobData.map((job, index) => (
-            <JobCard
-              key={index}
-              title={job.title}
-              description={job.description}
-              location={job.location}
-              requirements={job.requirements}
-              qualifications={job.qualifications}
-              benefits={job.benefits}
-            />
-          ))}
+  <div
+    className="container mx-auto px-6 lg:px-20 flex items-center justify-start text-left relative z-10"
+    style={{ paddingTop: "5%" }}
+  >
+    <motion.div
+      className="text-white text-2xl sm:text-4xl md:text-5xl font-bold leading-tight"
+      style={{
+        textShadow:
+          "4px 4px 12px rgba(0, 0, 0, 0.7), -4px -4px 12px rgba(0, 0, 0, 0.5)",
+      }}
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <h1 className="mb-2">Your Career in Logistics Starts Here</h1>
+      <h2 className="mb-2 text-lg sm:text-xl">
+        Join a team that’s driving the future of logistics.
+      </h2>
+      <h2 className="text-lg sm:text-xl">
+        Together, we innovate, optimize, and lead.
+      </h2>
+    </motion.div>
+  </div>
+</motion.div>
+
+
+      {/* Let's Work Together Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-gray-100 dark:from-[#0b1727] dark:to-[#10203a]">
+        <div className="container px-6 mx-auto">
+          <div className="grid grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div
+              className="col-span-12 md:col-span-5 text-center md:text-start"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
+                Let's Work Together
+              </h1>
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                At our logistics company, we believe in hiring a diverse team of
+                passionate individuals. Join us to shape the future of logistics and
+                drive impactful solutions across the globe.
+              </p>
+              <p className="text-lg text-gray-700 dark:text-gray-300">
+                Explore opportunities tailored for mid-level developers, industry
+                experts, and those passionate about innovation.
+              </p>
+            </motion.div>
+
+            {/* Right Content */}
+            <motion.div
+              className="col-span-12 md:col-span-6 md:col-start-7"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg bg-white dark:bg-gray-900">
+                <motion.h2
+                  className="text-xl font-semibold text-gray-800 dark:text-white mb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.7 }}
+                >
+                  Current Opportunities
+                </motion.h2>
+                <div className="space-y-4">
+                  {positions.map((content, i) => (
+                    <CareerCard
+                      content={content}
+                      key={i}
+                      index={i + 1}
+                      className="hover:shadow-md transition-shadow duration-300"
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className="text-center py-8 bg-gray-800">
-        <p className="text-white">© 2025 Logistics Corp. All Rights Reserved.</p>
-      </footer>
+      {/* Our Culture Section */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container px-6 mx-auto grid grid-cols-12 gap-12 items-center">
+          <motion.div
+            className="col-span-12 md:col-span-6"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={cultureImg}
+              alt="Our Culture"
+              className="rounded-lg shadow-lg w-full"
+            />
+          </motion.div>
+          <motion.div
+            className="col-span-12 md:col-span-6 text-center md:text-start"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              Our Culture
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              Collaboration, innovation, and diversity define who we are. We cultivate
+              an environment where ideas flourish and teamwork drives success.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="container px-6 mx-auto">
+          <motion.h2
+            className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            Benefits of Joining Us
+          </motion.h2>
+          <div className="grid grid-cols-12 gap-8">
+            <motion.div
+              className="col-span-12 md:col-span-6"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <img
+                src={benefitsImg}
+                alt="Benefits"
+                className="rounded-lg shadow-lg w-full"
+              />
+            </motion.div>
+            <motion.div
+              className="col-span-12 md:col-span-6"
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <ul className="list-disc pl-6 text-lg text-gray-700 dark:text-gray-300 space-y-4">
+                {benefits.map((benefit, i) => (
+                  <li key={i}>{benefit}</li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

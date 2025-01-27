@@ -7,7 +7,9 @@ import Home from "./components/Home";
 import Product from "./pages/Product";
 import Aboutus from "./pages/Aboutus";
 import Careers from "./pages/Careers";
-
+import Contact from "./pages/Contact";
+import Services from "./components/Services";
+import Testimonials from "./pages/Testimonials";
 const App = () => {
   return (
     <BrowserRouter> {/* Wrap everything with BrowserRouter only once */}
@@ -17,6 +19,9 @@ const App = () => {
         <Route path="/product" element={<Product />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path = "/contact" element = {<Contact />} />
+        <Route path = "/services" element = {<Services />} />
+        <Route path = "/testimonials" element = {<Testimonials />} />
       </Routes>
       <Footer />
     </BrowserRouter>

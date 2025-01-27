@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // Import Link and useLocation
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo.jpeg"; // Assuming you have the logo image
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation(); // Use location hook to check active route
+  const menuRef = useRef(null); // Ref to track the menu
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -12,18 +13,35 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path; // Check if the link is active
 
+  // Close the menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <nav className="bg-gray-200 shadow-lg rounded-full p-2">
+    <nav className="bg-gray-200 shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        {/* Logo Section */}
         <div className="flex items-center">
           <img src={Logo} alt="Logo" className="h-10 w-auto" />
         </div>
+
+        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           <Link
             to="/"
             className={`${
               isActive("/") ? "bg-blue-500 text-white" : "text-gray-700"
-            } text-lg py-2 px-6 border rounded-full hover:bg-blue-500 hover:text-white transition duration-200`}
+            } text-lg py-2 px-6 hover:bg-blue-500 hover:text-white transition duration-200`}
           >
             Home
           </Link>
@@ -31,7 +49,7 @@ const Navbar = () => {
             to="/product"
             className={`${
               isActive("/products") ? "bg-blue-500 text-white" : "text-gray-700"
-            } text-lg py-2 px-6 border rounded-full hover:bg-blue-500 hover:text-white transition duration-200`}
+            } text-lg py-2 px-6 hover:bg-blue-500 hover:text-white transition duration-200`}
           >
             Product
           </Link>
@@ -39,7 +57,7 @@ const Navbar = () => {
             to="/aboutus"
             className={`${
               isActive("/about") ? "bg-blue-500 text-white" : "text-gray-700"
-            } text-lg py-2 px-6 border rounded-full hover:bg-blue-500 hover:text-white transition duration-200`}
+            } text-lg py-2 px-6 hover:bg-blue-500 hover:text-white transition duration-200`}
           >
             About Us
           </Link>
@@ -47,12 +65,21 @@ const Navbar = () => {
             to="/careers"
             className={`${
               isActive("/careers") ? "bg-blue-500 text-white" : "text-gray-700"
-            } text-lg py-2 px-6 border rounded-full hover:bg-blue-500 hover:text-white transition duration-200`}
+            } text-lg py-2 px-6 hover:bg-blue-500 hover:text-white transition duration-200`}
           >
             Careers
           </Link>
+          <Link
+            to="/contact"
+            className={`${
+              isActive("/contact") ? "bg-blue-500 text-white" : "text-gray-700"
+            } text-lg py-2 px-6 hover:bg-blue-500 hover:text-white transition duration-200`}
+          >
+            Contact
+          </Link>
         </div>
-        {/* Mobile menu toggle */}
+
+        {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
@@ -85,9 +112,10 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-gray-100 border-t border-gray-300 shadow-lg rounded-full">
+        <div ref={menuRef} className="md:hidden bg-gray-200 shadow-lg">
           <Link
             to="/"
             className={`block px-6 py-2 text-gray-700 hover:bg-gray-300 transition duration-200 ${
@@ -119,6 +147,14 @@ const Navbar = () => {
             }`}
           >
             Careers
+          </Link>
+          <Link
+            to="/contact"
+            className={`block px-6 py-2 text-gray-700 hover:bg-gray-300 transition duration-200 ${
+              isActive("/contact") ? "bg-blue-500 text-white" : ""
+            }`}
+          >
+            Contact
           </Link>
         </div>
       )}

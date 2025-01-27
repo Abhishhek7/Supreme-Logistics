@@ -63,9 +63,9 @@ const Aboutus = () => {
             transition={{ duration: 1 }}
           >
             <h1 className="mb-2">Innovative Logistics Solutions</h1>
-            <h2 className="mb-2 text-lg sm:text-xl">Driving efficiency and reliability in every delivery.</h2>
-            <h2 className="mb-2 text-lg sm:text-xl">Optimizing your supply chain, one step at a time.</h2>
-            <h2 className="text-lg sm:text-xl">Pioneering sustainable and secure solutions for all industries.</h2>
+            <h2 className="  text-lg sm:text-xl">Driving efficiency and reliability in every delivery.</h2>
+            <h2 className="  text-lg sm:text-xl">Optimizing your supply chain, one step at a time.</h2>
+            <h2 className="  text-lg sm:text-xl">Pioneering sustainable and secure solutions for all industries.</h2>
           </motion.div>
         </div>
       </motion.div>
