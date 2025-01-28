@@ -166,14 +166,14 @@ const Team = () => {
   }, [cardsPerView]);
 
   return (
-    <section className="ezy__team9 light py-14 md:py-24 bg-gray-50 dark:bg-[#1a202c] text-zinc-900 dark:text-white">
+    <section className="ezy__team9 light py-14 md:py-24 bg-gray-50 dark:bg-[#1a202c] text-blue-700 dark:text-white">
       <div className="container px-4 mx-auto">
         <div className="flex justify-center mb-6 md:mb-12">
           <div className="max-w-lg text-center">
             <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4">
               Our Logistics Team
             </h2>
-            <p>
+            <p className="text-gray-700 dark:text-gray-300">
               Meet the experts who make our logistics operations run smoothly. With their dedication and expertise, we ensure every shipment is on time.
             </p>
           </div>

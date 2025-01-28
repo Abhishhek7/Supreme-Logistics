@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import chooseImg from '../assets/choose.jpg'
+import { Link } from "react-router-dom";
 
 const Choose = () => {
   return (
@@ -29,14 +30,14 @@ const Choose = () => {
               right savings account. Take a look and find the right one for you!
             </p>
             <div className="mt-12">
-              <a
-                href="#!"
-                className="bg-blue-600 hover:bg-opacity-90 text-white border border-blue-600 rounded-lg shadow-lg transition py-4 px-8 font-normal mb-6 sm:mb-0"
-              >
-                Explore more{" "}
-                <FontAwesomeIcon icon={faArrowRight} className="ml-1 transition-transform transform hover:translate-x-1" />
-              </a>
-            </div>
+  <Link
+    to="/services"
+    className="bg-blue-600 hover:bg-opacity-90 text-white border border-blue-600 rounded-lg shadow-lg transition py-4 px-8 font-normal mb-6 sm:mb-0"
+  >
+    Explore more{" "}
+    <FontAwesomeIcon icon={faArrowRight} className="ml-1 transition-transform transform hover:translate-x-1" />
+  </Link>
+</div>
           </div>
 
           {/* Right Section with Image */}

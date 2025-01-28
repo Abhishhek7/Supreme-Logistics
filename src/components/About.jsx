@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import aboutImage from "../assets/specs.jpg"; // Replace with the path to your image
-
+import { Link } from "react-router-dom";
 const About = () => {
   // Animation Variants
   const textVariants = {
@@ -55,13 +55,13 @@ const About = () => {
               At <span className="font-semibold">Supreme Logistics</span>, we specialize in reliable and efficient delivery solutions. From same-day deliveries to managing supply chains, we ensure smooth, fast, and secure logistics across the country.
             </p>
             <div>
-              <a
-                href="#!"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition transform hover:scale-105 shadow-lg"
-              >
-                Learn More
-              </a>
-            </div>
+  <Link
+    to="/aboutus"
+    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition transform hover:scale-105 shadow-lg"
+  >
+    View More
+  </Link>
+</div>
           </motion.div>
 
           {/* Right Image Section */}

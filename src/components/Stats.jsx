@@ -5,7 +5,7 @@ const styles = {
     section: "py-8 bg-gray-50 sm:py-10 lg:py-12 xl:py-14 relative",
     container: "px-4 mx-auto sm:px-6 lg:px-8 max-w-8xl", // Increased max width
     headerContainer: "max-w-xl mx-auto text-center",
-    headerTitle: "text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl",
+    headerTitle: "text-4xl font-bold tracking-tight text-blue-700 sm:text-5xl lg:text-6xl",
     headerSubtitle: "mt-4 text-lg font-medium leading-7 text-gray-600 lg:text-xl lg:mt-6 lg:leading-8",
     achievementsContainer: "relative max-w-5xl mx-auto mt-8 overflow-hidden bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 sm:mt-12 rounded-3xl shadow-lg", // Updated gradient
     circleDecoration: "absolute border-[8px] border-white rounded-full w-80 h-80 opacity-30 blur-xl",

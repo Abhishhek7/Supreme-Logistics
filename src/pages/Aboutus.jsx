@@ -81,7 +81,7 @@ const Aboutus = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-bold leading-tight text-blue-700 sm:text-4xl lg:text-5xl">
                 Reliable Logistics Services for Your Business
               </h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">
@@ -121,25 +121,26 @@ const Aboutus = () => {
 
               {/* Statistics Box */}
               <motion.div
-                className="absolute bottom-0 -left-14"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 1 }}
-              >
-                <div className="relative bg-violet-400 rounded-lg p-1 sm:p-2 shadow-lg">
-                  <div className="py-1 px-2 sm:py-2 sm:px-4">
-                    <FiMessageCircle className="w-5 h-5 bg-transparent text-white fill-white" />
-                    <span className="block mt-1 text-md font-bold text-black sm:mt-2 sm:text-xl lg:text-2xl">
-                      500,000+
-                    </span>
-                    <span className="block mt-1 text-xs font-medium leading-snug text-amber-900 sm:text-xs">
-                      Shipments Delivered
-                      <br />
-                      in 2024
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
+  className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-0 md:-left-14"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.5, duration: 1 }}
+>
+  <div className="relative bg-violet-400 rounded-lg p-3 sm:p-4 shadow-lg max-w-xs w-full text-center md:text-left">
+    <div>
+      <FiMessageCircle className="w-6 h-6 mx-auto md:mx-0 text-white" />
+      <span className="block mt-2 text-lg font-bold text-black sm:text-xl lg:text-2xl">
+        500,000+
+      </span>
+      <span className="block mt-1 text-sm font-medium leading-snug text-amber-900 sm:text-base">
+        Shipments Delivered
+        <br />
+        in 2024
+      </span>
+    </div>
+  </div>
+</motion.div>
+
             </motion.div>
           </div>
         </div>
@@ -155,7 +156,7 @@ const Aboutus = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-bold leading-tight text-blue-700 sm:text-4xl lg:text-5xl">
                 Global Coverage, Local Expertise
               </h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">

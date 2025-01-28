@@ -37,40 +37,27 @@ const Careers = () => {
   return (
     <div className="careers-page">
       {/* Career Page Banner with Animation */}
-<motion.div
-  className="relative overflow-hidden"
-  style={{
-    backgroundImage: `url(${careerImg})`, // Replace with your Career-related image
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    height: "60vh",
-  }}
+      <motion.div
+  className="relative overflow-hidden h-[60vh] bg-cover bg-center"
+  style={{ backgroundImage: `url(${careerImg})` }}
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 1.5 }}
 >
-  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+  {/* Adjusted overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/0"></div>
 
-  <div
-    className="container mx-auto px-6 lg:px-20 flex items-center justify-start text-left relative z-10"
-    style={{ paddingTop: "5%" }}
-  >
+  <div className="container mx-auto px-4 sm:px-6 lg:px-20 flex items-center justify-center md:justify-start text-center md:text-left h-full relative z-10">
+    {/* Text container with improved visibility */}
     <motion.div
-      className="text-white text-2xl sm:text-4xl md:text-5xl font-bold leading-tight"
-      style={{
-        textShadow:
-          "4px 4px 12px rgba(0, 0, 0, 0.7), -4px -4px 12px rgba(0, 0, 0, 0.5)",
-      }}
+      className="text-white text-2xl sm:text-4xl md:text-5xl font-bold  p-4 rounded-lg"
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <h1 className="mb-2">Your Career in Logistics Starts Here</h1>
-      <h2 className="mb-2 text-lg sm:text-xl">
+      <h1>Your Career in Logistics Starts Here</h1>
+      <h2 className="text-lg sm:text-xl mt-2">
         Join a team that’s driving the future of logistics.
-      </h2>
-      <h2 className="text-lg sm:text-xl">
-        Together, we innovate, optimize, and lead.
       </h2>
     </motion.div>
   </div>
@@ -78,120 +65,96 @@ const Careers = () => {
 
 
       {/* Let's Work Together Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-gray-100 dark:from-[#0b1727] dark:to-[#10203a]">
-        <div className="container px-6 mx-auto">
-          <div className="grid grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <motion.div
-              className="col-span-12 md:col-span-5 text-center md:text-start"
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
-                Let's Work Together
-              </h1>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                At our logistics company, we believe in hiring a diverse team of
-                passionate individuals. Join us to shape the future of logistics and
-                drive impactful solutions across the globe.
-              </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300">
-                Explore opportunities tailored for mid-level developers, industry
-                experts, and those passionate about innovation.
-              </p>
-            </motion.div>
-
-            {/* Right Content */}
-            <motion.div
-              className="col-span-12 md:col-span-6 md:col-start-7"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg bg-white dark:bg-gray-900">
-                <motion.h2
-                  className="text-xl font-semibold text-gray-800 dark:text-white mb-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.7 }}
-                >
-                  Current Opportunities
-                </motion.h2>
-                <div className="space-y-4">
-                  {positions.map((content, i) => (
-                    <CareerCard
-                      content={content}
-                      key={i}
-                      index={i + 1}
-                      className="hover:shadow-md transition-shadow duration-300"
-                    />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Culture Section */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container px-6 mx-auto grid grid-cols-12 gap-12 items-center">
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-50 to-gray-100 dark:from-[#0b1727] dark:to-[#10203a]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20 grid gap-8 md:grid-cols-12 items-center">
+          {/* Left Content */}
           <motion.div
-            className="col-span-12 md:col-span-6"
+            className="md:col-span-5 text-center md:text-left"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <img
-              src={cultureImg}
-              alt="Our Culture"
-              className="rounded-lg shadow-lg w-full"
-            />
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
+              Let's Work Together
+            </h1>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              Join our team to shape the future of logistics and create impactful solutions globally.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300">
+              Explore opportunities tailored for mid-level developers, industry experts, and passionate innovators.
+            </p>
+          </motion.div>
+
+          {/* Right Content */}
+          <motion.div
+            className="md:col-span-7"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg bg-white dark:bg-gray-900">
+              <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+                Current Opportunities
+              </h2>
+              <div className="grid gap-4">
+                {positions.map((content, i) => (
+                  <CareerCard
+                    content={content}
+                    key={i}
+                    index={i + 1}
+                    className="hover:shadow-md transition-shadow duration-300"
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Culture Section */}
+      <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20 grid gap-8 md:grid-cols-12 items-center">
+          <motion.div
+            className="md:col-span-6"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <img src={cultureImg} alt="Our Culture" className="rounded-lg shadow-lg w-full" />
           </motion.div>
           <motion.div
-            className="col-span-12 md:col-span-6 text-center md:text-start"
+            className="md:col-span-6 text-center md:text-left"
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
               Our Culture
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Collaboration, innovation, and diversity define who we are. We cultivate
-              an environment where ideas flourish and teamwork drives success.
+              Collaboration, innovation, and diversity define who we are. We cultivate an environment where ideas flourish and teamwork drives success.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container px-6 mx-auto">
-          <motion.h2
-            className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
+      <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">
             Benefits of Joining Us
-          </motion.h2>
-          <div className="grid grid-cols-12 gap-8">
+          </h2>
+          <div className="grid gap-8 md:grid-cols-12 items-center">
             <motion.div
-              className="col-span-12 md:col-span-6"
+              className="md:col-span-6"
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <img
-                src={benefitsImg}
-                alt="Benefits"
-                className="rounded-lg shadow-lg w-full"
-              />
+              <img src={benefitsImg} alt="Benefits" className="rounded-lg shadow-lg w-full" />
             </motion.div>
             <motion.div
-              className="col-span-12 md:col-span-6"
+              className="md:col-span-6"
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1 }}

@@ -145,7 +145,7 @@ const HowItWorks9 = () => {
         <div className="grid grid-cols-12">
           <div className="col-span-12">
             <div className="text-center">
-              <h2 className="text-3xl leading-snug font-bold capitalize md:text-5xl mb-2">
+              <h2 className="text-3xl text-blue-700 leading-snug font-bold capitalize md:text-5xl mb-2">
                 How Our Logistics Work
               </h2>
               <p className="text-[17px] leading-normal opacity-80">

@@ -60,7 +60,7 @@ CardItem.propTypes = {
 };
 
 // Services component
-const Services = () => {
+const Service = () => {
   return (
     <section className="ezy__numbers7 light py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
       <div className="container px-4 mx-auto">
@@ -87,4 +87,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Service;

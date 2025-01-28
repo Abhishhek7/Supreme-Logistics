@@ -8,7 +8,7 @@ import Product from "./pages/Product";
 import Aboutus from "./pages/Aboutus";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
-import Services from "./components/Services";
+import Services from "./pages/Services";
 import Testimonials from "./pages/Testimonials";
 const App = () => {
   return (

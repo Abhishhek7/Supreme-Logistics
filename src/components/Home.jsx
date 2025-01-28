@@ -12,7 +12,7 @@ import heroImage from "../assets/banner.jpg"; // Replace with your actual image 
 import heroImage2 from "../assets/aero.jpg";
 import heroImage3 from "../assets/ocean.jpg";
 import About from "./About"
-import Services from "./Services";
+import Service from "./Service";
 import Choose from "./Choose";
 import Clients from "./Client";
 import MiniService from "./MiniService";
@@ -96,7 +96,7 @@ const Home = () => {
     <MiniService/>
     <Choose/>
       <Clients /> 
-     <Services />
+     <Service />
     </section>
   );
 };
