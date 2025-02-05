@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/logo.jpg"; // Assuming you have the logo image
+import Logo from "../assets/logo2.png"; // Assuming you have the logo image
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +37,7 @@ const Navbar = () => {
             <img
               src={Logo}
               alt="Logo"
-              className="h-14 w-14 shadow-lg p-1 bg-white"
+              className="h-14 w-14 shadow-lg p-1 "
             />
             <span className="text-2xl font-bold text-blue-600" style={{ fontFamily: 'Roboto, sans-serif' }}>
               SUPREME LOGISTICS

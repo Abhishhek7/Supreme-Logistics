@@ -46,7 +46,7 @@ const Contact = () => {
 
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   const nameRegex = /^[A-Za-z\s]+$/;
-  const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+  const phoneRegex = /^(\+91[\s-]?)?[6789]\d{9}$/;
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -54,28 +54,37 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!nameRegex.test(formData.name)) newErrors.name = "Name must contain only letters.";
+    if (!nameRegex.test(formData.name))
+      newErrors.name = "Name must contain only letters.";
     if (!emailRegex.test(formData.email)) newErrors.email = "Enter a valid email.";
-    if (!phoneRegex.test(formData.phone)) newErrors.phone = "Format: (123) 456-7890.";
-    if (formData.message.length < 10) newErrors.message = "Message must be at least 10 characters.";
+    if (!phoneRegex.test(formData.phone))
+      newErrors.phone = "Enter a valid phone Number.";
+    if (formData.message.length < 10)
+      newErrors.message = "Message must be at least 10 characters.";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) console.log("Form submitted", formData);
+    if (!validateForm()) return;
+
+    alert(`Form Submitted Successfully! 🎉
+  
+    Name: ${formData.name}
+    Phone: ${formData.phone}
+    Email: ${formData.email}
+    Message: ${formData.message}`);
+
+    setFormData({ name: "", phone: "", email: "", message: "" }); // Clear form
   };
 
   // Automatically slide through cards every 3 seconds, stop if hovered
   useEffect(() => {
-    if (isHovered) return; // If hovered, stop the sliding
-
+    if (isHovered) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % contacts.length);
     }, 3000);
-
-    // Cleanup interval on component unmount or when hovering
     return () => clearInterval(interval);
   }, [isHovered]);
 
@@ -103,82 +112,65 @@ const Contact = () => {
             transition={{ duration: 1 }}
           >
             Get in Touch with Us
-            <p className="text-lg sm:text-xl">Empowering businesses with cutting-edge technology.</p>
+            <p className="text-lg sm:text-xl">
+              Empowering businesses with cutting-edge technology.
+            </p>
           </motion.h1>
-          
         </div>
       </motion.div>
-{/* Contact Cards - Slider */}
-<div className="bg-purple-100 py-16 flex flex-col items-center">
-  <h2 className="text-4xl font-bold text-blue-600 mb-10">Reach Us</h2>
-  <motion.div
-    className="group bg-gradient-to-r from-sky-800 to-blue-500 p-12 rounded-2xl shadow-2xl text-center max-w-xl mx-auto"
-    key={currentIndex}
-    initial={{ opacity: 0, x: 100 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: -100 }}
-    transition={{ duration: 0.5 }}
-    onMouseEnter={() => setIsHovered(true)} // Stop sliding on hover
-    onMouseLeave={() => setIsHovered(false)} // Resume sliding when mouse leaves
-  >
-    <div className="flex justify-center mb-6 text-5xl">{contacts[currentIndex].icon}</div>
-    <h4 className="text-3xl font-semibold text-white mb-4">
-      {contacts[currentIndex].title}
-    </h4>
-    <div className="space-y-3">
-      {contacts[currentIndex].details.map((detail, i) => (
-        <p key={i} className="text-sm md:text-xl text-white opacity-90 text-center">
-          {detail}
-        </p>
-      ))}
-    </div>
-  </motion.div>
 
-  {/* Navigation Buttons */}
-  <div className="mt-6 flex gap-4">
-    <button
-      onClick={() =>
-        setCurrentIndex(
-          (prev) => (prev - 1 + contacts.length) % contacts.length
-        )
-      }
-      className="bg-gray-700 text-white px-6 py-3 text-lg rounded-full"
-    >
-      ◀
-    </button>
-    <button
-      onClick={() =>
-        setCurrentIndex((prev) => (prev + 1) % contacts.length)
-      }
-      className="bg-gray-700 text-white px-6 py-3 text-lg rounded-full"
-    >
-      ▶
-    </button>
-  </div>
-</div>
+      {/* Contact Cards - Slider */}
+      <div className="bg-purple-100 py-16 flex flex-col items-center">
+        <h2 className="text-4xl font-bold text-blue-600 mb-10">Reach Us</h2>
+        <motion.div
+          className="group bg-gradient-to-r from-sky-800 to-blue-500 p-12 rounded-2xl shadow-2xl text-center max-w-xl mx-auto"
+          key={currentIndex}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.5 }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div className="flex justify-center mb-6 text-5xl">
+            {contacts[currentIndex].icon}
+          </div>
+          <h4 className="text-3xl font-semibold text-white mb-4">
+            {contacts[currentIndex].title}
+          </h4>
+          <div className="space-y-3">
+            {contacts[currentIndex].details.map((detail, i) => (
+              <p key={i} className="text-sm md:text-xl text-white opacity-90 text-center">
+                {detail}
+              </p>
+            ))}
+          </div>
+        </motion.div>
 
+        {/* Navigation Buttons */}
+        <div className="mt-6 flex gap-4">
+          <button
+            onClick={() =>
+              setCurrentIndex((prev) => (prev - 1 + contacts.length) % contacts.length)
+            }
+            className="bg-gray-700 text-white px-6 py-3 text-lg rounded-full"
+          >
+            ◀
+          </button>
+          <button
+            onClick={() => setCurrentIndex((prev) => (prev + 1) % contacts.length)}
+            className="bg-gray-700 text-white px-6 py-3 text-lg rounded-full"
+          >
+            ▶
+          </button>
+        </div>
+      </div>
 
       {/* Contact Form */}
       <div className="max-w-screen-xl mx-auto px-8 md:px-16 flex flex-col md:flex-row gap-8 mt-12">
         {/* Left Side - Image & Social Links */}
         <div className="w-full md:w-1/2 bg-white p-6 shadow-lg rounded-xl text-center">
-          <img
-            src={ContactImg}
-            alt="Contact Us"
-            className="rounded-xl mb-4 w-full h-auto"
-          />
-          <p className="text-lg text-gray-800 mb-4">For any queries, contact us:</p>
-          <div className="flex justify-center gap-6">
-            {[{ href: "https://linkedin.com", icon: <FaLinkedin size={30} className="text-blue-600" /> },
-              { href: "https://twitter.com", icon: <FaTwitter size={30} className="text-blue-400" /> },
-              { href: "https://facebook.com", icon: <FaFacebook size={30} className="text-blue-800" /> }].map((link, index) => (
-              <Link key={index} to={link.href}>
-                <div className="p-3 bg-gray-200 rounded-full shadow-md hover:scale-110 transition">
-                  {link.icon}
-                </div>
-              </Link>
-            ))}
-          </div>
+          <img src={ContactImg} alt="Contact Us" className="rounded-xl mb-4 w-full h-auto" />
         </div>
 
         {/* Right Side - Contact Form */}
@@ -197,15 +189,9 @@ const Contact = () => {
                   onChange={handleInputChange}
                   className="w-full border-2 border-blue-200 rounded-lg p-3"
                 />
-                {errors[field] && (
-                  <p className="text-red-500 text-sm">{errors[field]}</p>
-                )}
               </div>
             ))}
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-6 py-3 rounded-md mt-4 hover:scale-105 transition"
-            >
+            <button type="submit" className="bg-blue-600 text-white px-6 py-3 rounded-md mt-4">
               Send Message
             </button>
           </form>
