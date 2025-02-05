@@ -8,8 +8,8 @@ const Footer = () => {
       <div className='container mx-auto px-4'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           <div>
-            <h2 className='text-2xl font-bold mb-4'>SuprLog</h2>
-            <p>Effortlessly blend comfort & style.</p>
+            <h2 className='text-2xl font-bold mb-4'>SUPREME LOGISTICS</h2>
+            <p>Fast & Reliable Logistics.</p>
           </div>
           <div>
             <h2>Quick Links</h2>
@@ -33,17 +33,15 @@ const Footer = () => {
                 className='w-full p-2 rounded-l-lg bg-gray-800 border border-gray-600'
               />
               <button className='bg-blue-600 text-white px-4 py-2 rounded-r-lg border border-blue-600'>
-                Subscribe
+              Send
               </button>
             </form>
           </div>
         </div>
         <div className='flex justify-between mt-8 border-t border-gray-700 pt-4'>
-          <p>&copy;2025 E-DROBE. All rights reserved.</p>
-          <div className='flex space-x-4 mt-4 md:mt-0'>
-            <Link to='/privacypolicy'>Privacy Policy</Link>
-            <Link to='/termsandconditions'>Terms of Service</Link>
-          </div>
+        <p>&copy; {new Date().getFullYear()} SUPREME LOGISTICS. All rights reserved.</p>
+
+          
         </div>
       </div>
     </div>

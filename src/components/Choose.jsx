@@ -31,7 +31,7 @@ const Choose = () => {
             </p>
             <div className="mt-12">
   <Link
-    to="/services"
+    to="/chooseus"
     className="bg-blue-600 hover:bg-opacity-90 text-white border border-blue-600 rounded-lg shadow-lg transition py-4 px-8 font-normal mb-6 sm:mb-0"
   >
     Explore more{" "}

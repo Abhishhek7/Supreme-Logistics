@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faLinkedinIn, faTwitter, faBehance } from "@fortawesome/free-brands-svg-icons";
 import { useSpring, animated } from "@react-spring/web";
+import Teams from "../assets/Teams.jpg";
 
-// Team data with additional cards
+// Team data (all members)
 const teamMembers = [
   {
-    picture: "https://cdn.easyfrontend.com/pictures/users/user1.jpg",
-    fullName: "John Doe",
-    designation: "Logistics Manager",
-    bio: "Oversees the logistics department, ensuring smooth delivery operations.",
+    picture: Teams,
+    fullName: "Riyaz Shah",
+    designation: "Director",
+    bio: "Brings over a decade of invaluable experience in the logistics services industry. His leadership has navigated the company through complex logistical challenges, ensuring excellence in every service provided.",
     socialLinks: [
       { icon: faFacebookF, href: "#" },
       { icon: faLinkedinIn, href: "#" },
@@ -18,10 +19,10 @@ const teamMembers = [
     ],
   },
   {
-    picture: "https://cdn.easyfrontend.com/pictures/users/user2.jpg",
-    fullName: "Jane Smith",
-    designation: "Warehouse Supervisor",
-    bio: "Manages inventory, oversees storage, and ensures efficient shipment preparation.",
+    picture: Teams,
+    fullName: "Saba Shaikh",
+    designation: "Manager",
+    bio: "Oversees operational efficiency with a focus on client satisfaction and service excellence. She plays a key role in streamlining logistics operations, ensuring timely deliveries, and maintaining strong client relationships.",
     socialLinks: [
       { icon: faFacebookF, href: "#" },
       { icon: faLinkedinIn, href: "#" },
@@ -30,10 +31,10 @@ const teamMembers = [
     ],
   },
   {
-    picture: "https://cdn.easyfrontend.com/pictures/users/user3.jpg",
-    fullName: "Michael Johnson",
-    designation: "Operations Lead",
-    bio: "Ensures the coordination of all operations between teams for maximum efficiency.",
+    picture: Teams,
+    fullName: "Ayesha Shah",
+    designation: "Founder",
+    bio: "Her vision and entrepreneurial spirit laid the foundation for a commitment to excellence in logistics solutions nationwide. She has been instrumental in driving innovation and expanding the company’s reach across industries.",
     socialLinks: [
       { icon: faFacebookF, href: "#" },
       { icon: faLinkedinIn, href: "#" },
@@ -42,34 +43,10 @@ const teamMembers = [
     ],
   },
   {
-    picture: "https://cdn.easyfrontend.com/pictures/users/user4.jpg",
-    fullName: "Sara Lee",
-    designation: "Supply Chain Analyst",
-    bio: "Analyzes supply chain data to optimize routes and reduce costs.",
-    socialLinks: [
-      { icon: faFacebookF, href: "#" },
-      { icon: faLinkedinIn, href: "#" },
-      { icon: faTwitter, href: "#" },
-      { icon: faBehance, href: "#" },
-    ],
-  },
-  {
-    picture: "https://cdn.easyfrontend.com/pictures/users/user5.jpg",
-    fullName: "David Kim",
-    designation: "Freight Coordinator",
-    bio: "Coordinates freight shipments and ensures timely deliveries across regions.",
-    socialLinks: [
-      { icon: faFacebookF, href: "#" },
-      { icon: faLinkedinIn, href: "#" },
-      { icon: faTwitter, href: "#" },
-      { icon: faBehance, href: "#" },
-    ],
-  },
-  {
-    picture: "https://cdn.easyfrontend.com/pictures/users/user6.jpg",
-    fullName: "Emily Davis",
-    designation: "Customer Support",
-    bio: "Assists customers with inquiries and ensures all logistics are communicated effectively.",
+    picture: Teams,
+    fullName: "Harshada",
+    designation: "Operations Manager",
+    bio: "Leads field operations with a keen eye for detail and a commitment to operational excellence. She ensures seamless coordination, optimizes workflow efficiency, and implements best practices to enhance overall logistics performance.",
     socialLinks: [
       { icon: faFacebookF, href: "#" },
       { icon: faLinkedinIn, href: "#" },
@@ -79,116 +56,85 @@ const teamMembers = [
   },
 ];
 
-// Card component
-const TeamMemberCard = ({ member }) => (
-  <div
-    className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-4 lg:p-6 transform hover:scale-105 hover:translate-y-2 transition-all duration-300 ease-in-out"
-    style={{
-      width: "220px", // Fixed card width
-      height: "350px", // Fixed card height
-      background: "linear-gradient(to right, #e0e0e0, #f4f4f4)", // Light gradient background
-      marginRight: "20px", // Gap between cards
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-    }}
-  >
-    <img
-      src={member.picture}
-      alt={member.fullName}
-      className="max-w-full h-auto rounded-full border-4 p-1 border-blue-500 mx-auto"
-      width="100"
-      style={{ marginBottom: "16px" }} // Consistent spacing for image
-    />
-    <div style={{ flex: 1 }}>
-      <h4 className="text-xl font-medium mb-1 text-gray-800 dark:text-white" style={{ textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap" }}>
-        {member.fullName}
-      </h4>
-      <p className="mb-2 text-sm text-gray-600 dark:text-gray-400" style={{ textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap" }}>
-        {member.designation}
-      </p>
-      <p className="opacity-75 text-gray-700 dark:text-gray-300" style={{ overflow: "hidden", textOverflow: "ellipsis", height: "100px", lineHeight: "1.5" }}>
-        {member.bio}
-      </p>
-    </div>
-    <div className="mt-4" style={{ display: "flex", justifyContent: "space-around" }}>
-      {member.socialLinks.map((item, i) => (
-        <a
-          href={item.href}
-          className={`inline-block opacity-60 transition duration-300 hover:opacity-100 ${i + 1 !== member.socialLinks.length && "mr-4"}`}
-          key={i}
-        >
-          <FontAwesomeIcon icon={item.icon} className="text-blue-600 dark:text-blue-400 hover:text-blue-800" />
-        </a>
-      ))}
-    </div>
-  </div>
-);
+// Single Card Component
+const TeamMemberCard = ({ member }) => {
+  return (
+    <div className="max-w-lg bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 text-center mx-auto border border-gray-300">
+      {/* Profile Image */}
+      <img
+        src={member.picture}
+        alt={member.fullName}
+        className="w-32 h-32 rounded-full mx-auto border-4 border-blue-500 p-1"
+      />
 
+      {/* Name & Designation */}
+      <h4 className="text-2xl font-semibold mt-4 text-gray-900 dark:text-white">{member.fullName}</h4>
+      <p className="text-lg text-gray-600 dark:text-gray-300">{member.designation}</p>
+
+      {/* Bio */}
+      <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">{member.bio}</p>
+
+      {/* Social Icons */}
+      <div className="mt-4 flex justify-center space-x-4">
+        {member.socialLinks.map((item, i) => (
+          <a href={item.href} key={i} className="text-blue-600 dark:text-blue-400 hover:text-blue-800 transition">
+            <FontAwesomeIcon icon={item.icon} size="lg" />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Team Section with Sliding Cards
 const Team = () => {
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [cardsPerView, setCardsPerView] = useState(1); // Default to 1 for mobile
-  const cardWidth = 220; // Width of each card
-  const cardHeight = 350; // Height of each card
-  const gap = 20; // Gap between cards
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Adjust number of visible cards based on screen width
+  // Auto-slide effect
   useEffect(() => {
-    const updateCardsPerView = () => {
-      if (window.innerWidth >= 1024) { // Laptop and larger
-        setCardsPerView(3);
-      } else if (window.innerWidth >= 768) { // Tablet
-        setCardsPerView(2);
-      } else { // Phone
-        setCardsPerView(1);
-      }
-    };
-
-    updateCardsPerView(); // Initial check
-
-    window.addEventListener("resize", updateCardsPerView); // Update on window resize
-    return () => window.removeEventListener("resize", updateCardsPerView);
-  }, []);
-
-  // Animation for horizontal sliding
-  const scrollStyle = useSpring({
-    transform: `translateX(-${(currentCardIndex * (cardWidth + gap))}px)`, // Adjust for gap
-    config: { tension: 220, friction: 30 },
-  });
-
-  useEffect(() => {
-    // Automatically move to the next card
     const interval = setInterval(() => {
-      setCurrentCardIndex((prevIndex) => (prevIndex + 1) % (teamMembers.length - cardsPerView + 1));
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % teamMembers.length);
     }, 3000); // Change every 3 seconds
 
-    return () => clearInterval(interval); // Clean up interval on unmount
-  }, [cardsPerView]);
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, []);
+
+  // Animation for sliding effect
+  const slideAnimation = useSpring({
+    opacity: 1,
+    transform: "translateX(0%)",
+    from: { opacity: 0, transform: "translateX(100%)" },
+    config: { tension: 200, friction: 20 },
+  });
 
   return (
-    <section className="ezy__team9 light py-14 md:py-24 bg-gray-50 dark:bg-[#1a202c] text-blue-700 dark:text-white">
-      <div className="container px-4 mx-auto">
-        <div className="flex justify-center mb-6 md:mb-12">
-          <div className="max-w-lg text-center">
-            <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4">
-              Our Logistics Team
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300">
-              Meet the experts who make our logistics operations run smoothly. With their dedication and expertise, we ensure every shipment is on time.
-            </p>
-          </div>
-        </div>
+    <section className="py-14 md:py-24 bg-gray-50 dark:bg-[#1a202c] text-blue-700 dark:text-white">
+      <div className="container px-4 mx-auto text-center">
+        {/* Section Title */}
+        <h2 className="text-3xl font-bold md:text-5xl mb-6">Meet Our Logistics Experts</h2>
+        <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto">
+          Get to know the team that ensures seamless logistics operations with expertise and dedication.
+        </p>
 
-        {/* Animated Horizontal Scroll Container */}
-        <div style={{ width: `${(cardWidth + gap) * cardsPerView - gap}px`, overflow: "hidden", margin: "0 auto" }}>
-          {/* Animated wrapper to control the horizontal sliding */}
-          <animated.div style={{ display: "flex", ...scrollStyle }}>
-            {teamMembers.map((member, index) => (
-              <div key={index} style={{ flex: "none" }}>
-                <TeamMemberCard member={member} />
-              </div>
-            ))}
-          </animated.div>
+        {/* Animated Card Display */}
+        <animated.div style={slideAnimation}>
+          <TeamMemberCard member={teamMembers[currentIndex]} />
+        </animated.div>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-center mt-6 space-x-4">
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            onClick={() => setCurrentIndex((prevIndex) => (prevIndex === 0 ? teamMembers.length - 1 : prevIndex - 1))}
+          >
+            Prev
+          </button>
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            onClick={() => setCurrentIndex((prevIndex) => (prevIndex + 1) % teamMembers.length)}
+          >
+            Next
+          </button>
         </div>
       </div>
     </section>

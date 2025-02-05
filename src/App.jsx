@@ -9,7 +9,9 @@ import Aboutus from "./pages/Aboutus";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
+import ChooseUs from "./pages/ChooseUs";
 import Testimonials from "./pages/Testimonials";
+
 const App = () => {
   return (
     <BrowserRouter> {/* Wrap everything with BrowserRouter only once */}
@@ -22,6 +24,8 @@ const App = () => {
         <Route path = "/contact" element = {<Contact />} />
         <Route path = "/services" element = {<Services />} />
         <Route path = "/testimonials" element = {<Testimonials />} />
+        <Route path = "/chooseus" element = {<ChooseUs />} />
+        
       </Routes>
       <Footer />
     </BrowserRouter>

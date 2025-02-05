@@ -25,13 +25,13 @@ const features = [
   },
   {
     icon: faMapMarkedAlt,
-    title: "Real-Time Tracking",
-    desc: "Monitor your shipments in real time with advanced GPS technology.",
+    title: "PAN India Logistics",
+    desc: "Pan India logistics enables seamless nationwide delivery and transportation.",
   },
   {
     icon: faShippingFast,
-    title: "Global Shipping",
-    desc: "Expand your reach with our reliable international shipping services.",
+    title: "Nationwide Logistics",
+    desc: "Ensure timely and efficient delivery across the country with our trusted logistics services.",
   },
   {
     icon: faBoxes,
@@ -55,15 +55,15 @@ const FeatureItem = ({ feature }) => {
         <FontAwesomeIcon icon={feature.icon} />
       </div>
       <div>
-        <h4 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+        <h4 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white group-hover:text-black group-hover:text-shadow-md">
           {feature.title}
         </h4>
-        <p className="opacity-70 text-gray-700 dark:text-gray-300">
+        <p className="opacity-70 text-gray-700 dark:text-gray-300 group-hover:text-black group-hover:text-shadow-md">
           {feature.desc}
         </p>
       </div>
-      {/* Overlay effect on card */}
-      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-lg" />
+      {/* Reduced opacity for overlay */}
+      <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-0 transition-opacity duration-300 rounded-lg" />
     </div>
   );
 };
@@ -79,9 +79,9 @@ const MiniService = () => {
       <div className="container px-4 mx-auto">
         <div className="flex max-w-3xl justify-center text-center mb-12 mx-auto">
           <div>
-          <h2 className="text-2xl leading-none font-bold md:text-[45px] mb-6 motion-safe:animate__fadeIn text-blue-600 tracking-wide uppercase">
-  Logistics Services
-</h2>
+            <h2 className="text-2xl leading-none font-bold md:text-[45px] mb-6 motion-safe:animate__fadeIn text-blue-600 tracking-wide uppercase">
+              Logistics Services
+            </h2>
             <p className="text-lg mb-6 motion-safe:animate__fadeIn delay-100">
               Streamline your supply chain with our comprehensive logistics
               solutions tailored to your business needs.

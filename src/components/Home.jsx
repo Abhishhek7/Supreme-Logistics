@@ -4,13 +4,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay"; // Import autoplay styles (optional)
-
+import { Link } from "react-router-dom";
 // Import Swiper modules directly
 import { Pagination, Navigation, Autoplay } from "swiper/modules"; // Include Autoplay module
 
 import heroImage from "../assets/banner.jpg"; // Replace with your actual image paths
-import heroImage2 from "../assets/aero.jpg";
-import heroImage3 from "../assets/ocean.jpg";
+import heroImage2 from "../assets/Banner2.jpg";
+import heroImage3 from "../assets/Banner3.jpg";
 import About from "./About"
 import Service from "./Service";
 import Choose from "./Choose";
@@ -25,8 +25,8 @@ const Home = () => {
       title: "Enjoy Hassle-Free Delivery",
       description:
         "Supreme Logistics offers PAN India services for fast and reliable transportation solutions.",
-      buttonText: "Track Order",
-      buttonLink: "#track",
+      buttonText: "View More",
+      buttonLink: "/product",
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ const Home = () => {
       description:
         "Your trusted partner for efficient delivery solutions, ensuring customer satisfaction.",
       buttonText: "Explore Services",
-      buttonLink: "#services",
+      buttonLink: "/services",
     },
     {
       id: 3,
@@ -43,8 +43,8 @@ const Home = () => {
       title: "We Deliver Excellence",
       description:
         "Experience seamless logistics with cutting-edge technology and a dedicated team.",
-      buttonText: "Get a Quote",
-      buttonLink: "#quote",
+      buttonText: "Why Us?",
+      buttonLink: "/quote",
     },
   ];
 
@@ -81,12 +81,13 @@ const Home = () => {
                   {slide.description}
                 </p>
                 {/* Button */}
-                <a
-                  href={slide.buttonLink}
-                  className="inline-block px-8 py-3 text-lg font-semibold text-white bg-blue-600 border border-blue-600 rounded-full hover:bg-blue-700 hover:border-blue-700 transition duration-300"
-                >
-                  {slide.buttonText}
-                </a>
+                <Link
+  to={slide.buttonLink}
+  className="inline-block px-8 py-3 text-lg font-semibold text-white bg-blue-600 border border-blue-600 rounded-full hover:bg-blue-700 hover:border-blue-700 transition duration-300"
+>
+  {slide.buttonText}
+</Link>
+
               </div>
             </div>
           </SwiperSlide>

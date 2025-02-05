@@ -1,9 +1,16 @@
-import React, { useState } from "react";
-import { FaTwitter, FaLinkedin, FaPhone, FaEnvelope, FaWhatsapp, FaFacebook } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaWhatsapp,
+  FaLinkedin,
+  FaTwitter,
+  FaFacebook,
+} from "react-icons/fa";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import ContactImg from "../assets/Contact.jpg";
 import ContactImg1 from "../assets/Contact1.jpg";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,65 +19,69 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [errors, setErrors] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const [errors, setErrors] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const contacts = [
+    {
+      icon: <FaPhone size={40} className="text-white" />,
+      title: "Call Us",
+      details: ["+91 8287050860", "+91 9769432064", "+91 8976028991"],
+      gradient: "from-purple-500 to-purple-700",
+    },
+    {
+      icon: <FaEnvelope size={40} className="text-white" />,
+      title: "Email Us",
+      details: ["supremelogisticssolutions25@gmail.com"],
+      gradient: "from-teal-500 to-teal-700",
+    },
+    {
+      icon: <FaWhatsapp size={40} className="text-white" />,
+      title: "WhatsApp",
+      details: ["+91 9922446634"],
+      gradient: "from-orange-500 to-orange-700",
+    },
+  ];
 
-  // Regex for email validation
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-  // Regex for name validation (only letters and spaces)
   const nameRegex = /^[A-Za-z\s]+$/;
-  // Regex for phone number validation (format: (XXX) XXX-XXXX)
   const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const validateForm = () => {
     const newErrors = {};
-
-    if (!nameRegex.test(formData.name)) {
-      newErrors.name = "Name must contain only letters and spaces.";
-    }
-
-    if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address.";
-    }
-
-    if (!phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number (e.g., (123) 456-7890).";
-    }
-
-    if (formData.message.length < 10) {
-      newErrors.message = "Message must be at least 10 characters long.";
-    }
-
+    if (!nameRegex.test(formData.name)) newErrors.name = "Name must contain only letters.";
+    if (!emailRegex.test(formData.email)) newErrors.email = "Enter a valid email.";
+    if (!phoneRegex.test(formData.phone)) newErrors.phone = "Format: (123) 456-7890.";
+    if (formData.message.length < 10) newErrors.message = "Message must be at least 10 characters.";
     setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0; // If no errors, return true
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Form is valid, you can now submit the form
-      console.log("Form submitted", formData);
-      // Here you would call your form handler (e.g., GetForm, Axios, etc.)
-    }
+    if (validateForm()) console.log("Form submitted", formData);
   };
+
+  // Automatically slide through cards every 3 seconds, stop if hovered
+  useEffect(() => {
+    if (isHovered) return; // If hovered, stop the sliding
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % contacts.length);
+    }, 3000);
+
+    // Cleanup interval on component unmount or when hovering
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   return (
     <>
-      {/* Contact Us Banner with Animation */}
+      {/* Contact Us Banner */}
       <motion.div
         className="relative overflow-hidden"
         style={{
@@ -83,160 +94,121 @@ const Contact = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        <div
-          className="absolute top-0 left-0 w-full h-full bg-black opacity-50"
-          style={{ zIndex: 1 }}
-        ></div>
-
-        <div
-          className="container mx-auto px-6 lg:px-20 flex items-center justify-start text-left relative z-10"
-          style={{ paddingTop: "5%" }}
-        >
-          <motion.div
-            className="text-white text-2xl sm:text-4xl md:text-5xl font-bold leading-tight"
-            style={{
-              textShadow:
-                "4px 4px 12px rgba(0, 0, 0, 0.7), -4px -4px 12px rgba(0, 0, 0, 0.5)",
-            }}
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="container mx-auto px-6 lg:px-20 flex items-center text-left relative z-10 pt-20">
+          <motion.h1
+            className="text-white text-4xl md:text-5xl font-bold"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="mb-2">Get in Touch with Us</h1>
-            <h2 className="text-lg sm:text-xl">We'd love to hear from you!</h2>
-            <h2 className="text-lg sm:text-xl">Feel free to reach out for inquiries, feedback, or support.</h2>
-            <h2 className="text-lg sm:text-xl">Our team is here to assist you every step of the way.</h2>
-          </motion.div>
+            Get in Touch with Us
+            <p className="text-lg sm:text-xl">Empowering businesses with cutting-edge technology.</p>
+          </motion.h1>
+          
         </div>
       </motion.div>
+{/* Contact Cards - Slider */}
+<div className="bg-purple-100 py-16 flex flex-col items-center">
+  <h2 className="text-4xl font-bold text-blue-600 mb-10">Reach Us</h2>
+  <motion.div
+    className="group bg-gradient-to-r from-sky-800 to-blue-500 p-12 rounded-2xl shadow-2xl text-center max-w-xl mx-auto"
+    key={currentIndex}
+    initial={{ opacity: 0, x: 100 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -100 }}
+    transition={{ duration: 0.5 }}
+    onMouseEnter={() => setIsHovered(true)} // Stop sliding on hover
+    onMouseLeave={() => setIsHovered(false)} // Resume sliding when mouse leaves
+  >
+    <div className="flex justify-center mb-6 text-5xl">{contacts[currentIndex].icon}</div>
+    <h4 className="text-3xl font-semibold text-white mb-4">
+      {contacts[currentIndex].title}
+    </h4>
+    <div className="space-y-3">
+      {contacts[currentIndex].details.map((detail, i) => (
+        <p key={i} className="text-sm md:text-xl text-white opacity-90 text-center">
+          {detail}
+        </p>
+      ))}
+    </div>
+  </motion.div>
 
-      <div id="contact" className="w-full bg-gray-200 text-black py-16">
-        <div className="max-w-screen-xl mx-auto px-8 md:px-16">
-          {/* Section Heading */}
-          <h2 className="text-5xl md:text-7xl font-bold tracking-wider uppercase text-center mb-12 text-gray-900">
-            Reach Us
-          </h2>
+  {/* Navigation Buttons */}
+  <div className="mt-6 flex gap-4">
+    <button
+      onClick={() =>
+        setCurrentIndex(
+          (prev) => (prev - 1 + contacts.length) % contacts.length
+        )
+      }
+      className="bg-gray-700 text-white px-6 py-3 text-lg rounded-full"
+    >
+      ◀
+    </button>
+    <button
+      onClick={() =>
+        setCurrentIndex((prev) => (prev + 1) % contacts.length)
+      }
+      className="bg-gray-700 text-white px-6 py-3 text-lg rounded-full"
+    >
+      ▶
+    </button>
+  </div>
+</div>
 
-          {/* Contact Details Cards */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Contact Card 1 */}
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out border border-gray-300">
-              <div className="flex items-center mb-4">
-                <FaPhone size={30} className="mr-4 text-blue-500" />
-                <h4 className="text-2xl font-bold">Contact Number</h4>
-              </div>
-              <p className="text-lg">+1 (123) 456-7890</p>
-            </div>
 
-            {/* Contact Card 2 */}
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out border border-gray-300">
-              <div className="flex items-center mb-4">
-                <FaEnvelope size={30} className="mr-4 text-blue-500" />
-                <h4 className="text-2xl font-bold">Email</h4>
-              </div>
-              <p className="text-lg">contact@domain.com</p>
-            </div>
-
-            {/* Contact Card 3 */}
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out border border-gray-300">
-              <div className="flex items-center mb-4">
-                <FaWhatsapp size={30} className="mr-4 text-green-500" />
-                <h4 className="text-2xl font-bold">WhatsApp</h4>
-              </div>
-              <p className="text-lg">+1 (123) 456-7890</p>
-            </div>
-          </div>
-
-          {/* Content Area */}
-          <div className="flex flex-col md:flex-row gap-8 mt-12">
-            {/* Contact Information */}
-            <div className="w-full md:w-1/2 rounded-xl bg-white border p-6 shadow-lg">
-              <img
-                src={ContactImg}
-                alt="Contact Us"
-                className="rounded-xl mb-4 w-full h-auto"
-              />
-              <p className="text-lg md:text-xl mb-6 text-gray-800">
-                For any queries, contact us here:
-              </p>
-
-              {/* Social Links */}
-              <div className="flex flex-wrap justify-center gap-6">
-                {[{
-                  href: "https://www.linkedin.com/",
-                  icon: <FaLinkedin size={30} />,
-                  bgColor: "bg-blue-600",
-                },
-                {
-                  href: "https://twitter.com/",
-                  icon: <FaTwitter size={30} />,
-                  bgColor: "bg-blue-400",
-                },
-                {
-                  href: "https://facebook.com/",
-                  icon: <FaFacebook size={30} />,
-                  bgColor: "bg-blue-800", // Facebook's blue color
-                }].map((link, index) => (
-                  <Link key={index} to={link.href}>
-                    <div
-                      className={`flex items-center justify-center ${link.bgColor} rounded-full shadow-md p-3 transition-transform transform hover:scale-110 duration-300 ease-in-out cursor-pointer`}
-                    >
-                      {link.icon}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="w-full md:w-1/2 bg-white border rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold mb-4 text-gray-800">Send Us a Message</h3>
-              <form onSubmit={handleSubmit}>
-                <div className="space-y-4">
-                  {/* Form Fields */}
-                  {[{ label: "Name", type: "text", name: "name", error: errors.name },
-                  { label: "Phone", type: "text", name: "phone", error: errors.phone },
-                  { label: "Email", type: "email", name: "email", error: errors.email },
-                  { label: "Message", type: "textarea", name: "message", rows: 6, error: errors.message }
-                  ].map((field, index) => (
-                    <div key={index}>
-                      <label className="block text-md font-normal text-slate-600 mb-2">
-                        {field.label}
-                      </label>
-                      {field.type === "textarea" ? (
-                        <textarea
-                          name={field.name}
-                          rows={field.rows || 4}
-                          value={formData[field.name]}
-                          onChange={handleInputChange}
-                          className="w-full border-2 text-black border-blue-200 rounded-lg p-3 focus:outline-none focus:border-blue-500"
-                        ></textarea>
-                      ) : (
-                        <input
-                          type={field.type}
-                          name={field.name}
-                          value={formData[field.name]}
-                          onChange={handleInputChange}
-                          className="w-full border-2 text-black border-blue-200 rounded-lg p-3 focus:outline-none focus:border-blue-500"
-                        />
-                      )}
-                      {field.error && <p className="text-red-500 text-sm">{field.error}</p>}
-                    </div>
-                  ))}
+      {/* Contact Form */}
+      <div className="max-w-screen-xl mx-auto px-8 md:px-16 flex flex-col md:flex-row gap-8 mt-12">
+        {/* Left Side - Image & Social Links */}
+        <div className="w-full md:w-1/2 bg-white p-6 shadow-lg rounded-xl text-center">
+          <img
+            src={ContactImg}
+            alt="Contact Us"
+            className="rounded-xl mb-4 w-full h-auto"
+          />
+          <p className="text-lg text-gray-800 mb-4">For any queries, contact us:</p>
+          <div className="flex justify-center gap-6">
+            {[{ href: "https://linkedin.com", icon: <FaLinkedin size={30} className="text-blue-600" /> },
+              { href: "https://twitter.com", icon: <FaTwitter size={30} className="text-blue-400" /> },
+              { href: "https://facebook.com", icon: <FaFacebook size={30} className="text-blue-800" /> }].map((link, index) => (
+              <Link key={index} to={link.href}>
+                <div className="p-3 bg-gray-200 rounded-full shadow-md hover:scale-110 transition">
+                  {link.icon}
                 </div>
-
-                {/* Submit Button */}
-                <div className="flex justify-center mt-6">
-                  <button
-                    type="submit"
-                    className="group bg-blue-200 text-green-900 px-6 py-3 font-bold uppercase rounded-md tracking-wider cursor-pointer transition-transform transform hover:scale-105 duration-300 ease-in-out"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
-            </div>
+              </Link>
+            ))}
           </div>
+        </div>
+
+        {/* Right Side - Contact Form */}
+        <div className="w-full md:w-1/2 bg-white p-6 shadow-lg rounded-xl">
+          <h3 className="text-xl font-bold mb-4 text-gray-800">Send Us a Message</h3>
+          <form onSubmit={handleSubmit}>
+            {["name", "phone", "email", "message"].map((field, index) => (
+              <div key={index} className="mb-4">
+                <label className="block text-md font-normal text-gray-600">
+                  {field.charAt(0).toUpperCase() + field.slice(1)}
+                </label>
+                <input
+                  type={field === "message" ? "textarea" : "text"}
+                  name={field}
+                  value={formData[field]}
+                  onChange={handleInputChange}
+                  className="w-full border-2 border-blue-200 rounded-lg p-3"
+                />
+                {errors[field] && (
+                  <p className="text-red-500 text-sm">{errors[field]}</p>
+                )}
+              </div>
+            ))}
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-6 py-3 rounded-md mt-4 hover:scale-105 transition"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
     </>

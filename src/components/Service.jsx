@@ -9,15 +9,15 @@ const cards = [
     title: "Trade Lane Covered",
   },
   {
-    count: 43,
-    title: "Countries",
+    count: 23,
+    title: "States Served",
   },
   {
-    count: 641,
-    title: "Completed Fund",
+    count: 6000,
+    title: "Completed Deliveries",
   },
   {
-    count: 10000,
+    count: 100,
     title: "Employees",
   },
 ];
@@ -65,14 +65,14 @@ const Service = () => {
     <section className="ezy__numbers7 light py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
       <div className="container px-4 mx-auto">
         <div className="flex flex-col justify-center text-center max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-[45px] font-bold mb-6">
-            Crud much unstint far camel inanimately.
-          </h1>
-          <p className="text-lg opacity-80 max-w-4xl mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quod
-            perferendis nihil cupiditate aliquid qui exercitationem labore
-            veritatis eaque nobis libero earum.
-          </p>
+        <h1 className="text-3xl md:text-[45px] font-bold text-blue-700 mb-6">
+  Streamlined Road Logistics for a Connected World
+</h1>
+<p className="text-lg opacity-80 max-w-4xl mx-auto">
+  From long-haul transportation to efficient last-mile delivery, we ensure seamless road logistics services. With real-time tracking, optimized routing, and expert handling, we guarantee safe, on-time deliveries while minimizing costs and environmental impact.
+</p>
+
+
         </div>
         <div className="grid grid-cols-12 gap-6 max-w-7xl mx-auto text-center mt-12">
           {cards.map((item, i) => (

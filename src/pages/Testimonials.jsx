@@ -3,17 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import Testi1 from '../assets/Testi1.jpg'
-import Testi2 from '../assets/Testi2.jpg'
-import Testi3 from '../assets/Testi3.jpg'
+import Testi from "../assets/Teams.jpg"
 import Client from "../components/Client";
 
 const testimonialList = [
   {
     title: "Very Good Services",
     author: {
-      fullName: "Charles Smith",
-      picture: Testi1,
+      fullName: "Gurdas Singh",
+      picture: Testi,
       designation: "Founder / CEO",
     },
     rating: 3.5,
@@ -23,8 +21,8 @@ const testimonialList = [
   {
     title: "High Quality Service",
     author: {
-      fullName: "Roman Stokes",
-      picture: Testi2,
+      fullName: "Rajesh Kumar",
+      picture: Testi,
       designation: "Founder / CEO",
     },
     rating: 4,
@@ -34,15 +32,50 @@ const testimonialList = [
   {
     title: "Impressive Skills",
     author: {
-      fullName: "Micheal Johnson",
-      picture: Testi3,
+      fullName: "Pushkar Thakur",
+      picture: Testi,
       designation: "Founder / CEO",
     },
     rating: 5,
     description:
       "Excellent service! From pick-up to delivery, everything was seamless. The tracking system made it easy to monitor the progress of each shipment.",
   },
+  // New testimonials
+  {
+    title: "Exceptional Customer Care",
+    author: {
+      fullName: "Simran Kaur",
+      picture: Testi, // Add a picture path or import a new image
+      designation: "Marketing Head",
+    },
+    rating: 4.5,
+    description:
+      "Their customer support team is always ready to assist. The delivery was fast, and I was updated at every stage. Excellent communication and service.",
+  },
+  {
+    title: "On-Time Delivery",
+    author: {
+      fullName: "Anil Sharma",
+      picture: Testi, // Add a picture path or import a new image
+      designation: "Operations Manager",
+    },
+    rating: 5,
+    description:
+      "I am extremely satisfied with the timely delivery of our bulk shipments. The logistics team delivered on their promises and made the entire process seamless.",
+  },
+  {
+    title: "Reliable Partner",
+    author: {
+      fullName: "Aarti Verma",
+      picture: Testi, // Add a picture path or import a new image
+      designation: "Supply Chain Manager",
+    },
+    rating: 4,
+    description:
+      "We have been working with them for several months now, and they consistently deliver our goods securely and on time. We trust them completely for our logistics needs.",
+  },
 ];
+
 
 const Rating = ({ rating, showLabel, className, ...rest }) => (
   <p className={classNames("mb-6", className)} {...rest}>

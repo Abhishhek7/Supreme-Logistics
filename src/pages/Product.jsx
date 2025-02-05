@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import pan from "../assets/pan.jpg";
-import Atm from "../assets/Atm.jpg";
-import Storage from "../assets/Storage.jpg";
-import Tracking from "../assets/Tracking.jpg";
+import pan2 from "../assets/pan2.jpg";
+import AC from "../assets/AC.jpg";
+import Camera1 from "../assets/Camera1.jpg";
 import AtmImg from "../assets/Atm1.jpg";
 import ProductImg from "../assets/Product.jpg";
 import one from "../assets/one.png";
@@ -26,24 +26,28 @@ import Features from "../components/Features";
 const services = [
   {
     img: pan,
-    title: "Pan-India Delivery Network",
-    desc: "Offering seamless and efficient logistics solutions across all states in India. From metropolitan cities to remote locations, we've got you covered.",
+    title: "Pan-India Logistics Solutions",
+    desc: "Providing comprehensive and efficient logistics services across every corner of India. From urban hubs to remote areas, we ensure timely and reliable deliveries, no matter where you are."
+  },
+  
+  {
+    img: pan2,
+    title: "Pan-India Courier Services",
+    desc: "Delivering fast, secure, and reliable courier services across every state in India. Whether it's a major city or a rural area, our network ensures swift delivery to your doorstep."
+  },
+  
+
+  {
+    img: AC,
+    title:"AC Installation",
+    desc:"Professional AC installation services ensuring efficient cooling, optimal performance, and long-term reliability.",
   },
   {
-    img: Atm,
-    title: "ATM Deployment & Maintenance",
-    desc: "Expert services for installing and maintaining ATM machines nationwide, ensuring accessibility and security for your customers.",
-  },
-  {
-    img: Storage,
-    title: "Warehouse and Storage Solutions",
-    desc: "State-of-the-art warehousing facilities designed for secure storage and efficient inventory management tailored to your business needs.",
-  },
-  {
-    img: Tracking,
-    title: "Real-Time Delivery Tracking",
-    desc: "Cutting-edge technology to monitor your shipments in real-time, offering complete visibility and control over your supply chain.",
-  },
+    img: Camera1,
+    title: "Camera DVR Installation",
+    desc: "Professional installation of Camera DVR systems for enhanced security and surveillance. Ensuring seamless setup, reliable performance, and complete monitoring solutions."
+}
+
 ];
 
 const features = [
@@ -214,7 +218,7 @@ const Product = () => {
             <div className="absolute -right-full -bottom-48 bg-blue-950 dark:bg-black min-w-[250vw] h-[1000px] md:right-1/4" />
             <div className="col-span-12 md:col-span-8 lg:col-span-5 xl:col-span-4 text-start text-white relative">
               <h2 className="text-2xl leading-none md:text-[45px] font-bold mb-6">
-                Our Services
+                Our Products
               </h2>
               <p className="text-lg opacity-80 leading-6 mb-6">
                 Empowering businesses with end-to-end logistics solutions, PAN-India coverage, and advanced ATM deployment services.
@@ -240,7 +244,7 @@ const Product = () => {
           <div className="flex max-w-5xl justify-center text-center mx-auto md:mb-12 fade-in">
             <div>
               <h2 className="text-3xl font-bold leading-tight md:text-[45px] mt-4 mb-4 text-blue-600 dark:text-blue-400">
-                Logistics, ATM Deployment & Maintenance
+                ATM Shifting & Transportation.
               </h2>
               <p className="text-lg opacity-80 leading-7 mb-8 fade-in">
                 We provide end-to-end logistics solutions, ATM deployment services, and maintenance for businesses across India. Our focus is on reliability, security, and timely delivery.

@@ -8,6 +8,7 @@ const Navbar = () => {
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
+    console.log("Menu toggled:", !isOpen); // Debug statement
     setIsOpen((prev) => !prev);
   };
 
@@ -36,9 +37,9 @@ const Navbar = () => {
             <img
               src={Logo}
               alt="Logo"
-              className="h-14 w-14 rounded-full shadow-lg p-1 bg-white"
+              className="h-14 w-14 shadow-lg p-1 bg-white"
             />
-            <span className="hidden lg:block text-2xl font-bold text-blue-600">
+            <span className="text-2xl font-bold text-blue-600" style={{ fontFamily: 'Roboto, sans-serif' }}>
               SUPREME LOGISTICS
             </span>
           </Link>
@@ -84,7 +85,7 @@ const Navbar = () => {
               isActive("/contact") ? "bg-blue-500 text-white" : "text-gray-700"
             } text-lg py-2 px-6 hover:bg-blue-500 hover:text-white transition duration-200`}
           >
-            Contact
+            Contact Us
           </Link>
         </div>
 
@@ -179,7 +180,7 @@ const Navbar = () => {
             }`}
             onClick={() => setIsOpen(false)}
           >
-            Contact
+            Contact Us
           </Link>
         </div>
       )}

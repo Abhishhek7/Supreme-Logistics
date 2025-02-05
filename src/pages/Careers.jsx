@@ -5,10 +5,10 @@ import cultureImg from "../assets/culture.jpg";
 import benefitsImg from "../assets/benefit.jpg";
 
 const positions = [
-  { title: "Software Engineer", description: "Build tools to revolutionize logistics." },
-  { title: "Logistics Manager", description: "Streamline global supply chains." },
-  { title: "Customer Support", description: "Provide exceptional service to clients." },
-  { title: "Product Manager", description: "Drive innovation in logistics technology." },
+  { title: "Field Manager", description: "Manage field operations to ensure efficient logistics delivery." },
+  { title: "Sales/Marketing", description: "Promote logistics solutions and drive business growth." },
+  { title: "Customer Support", description: "Assist clients with inquiries and resolve issues promptly." },
+  { title: "Office Executive", description: "Oversee office operations and improve logistics efficiency." },
 ];
 
 const benefits = [

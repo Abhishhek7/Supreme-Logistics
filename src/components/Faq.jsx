@@ -14,13 +14,13 @@ const Faq = () => {
       id: 2,
       question: "Q. What shipping methods do you offer?",
       answer:
-        "We offer a range of shipping methods including air freight, sea freight, road transportation, and rail services to accommodate different needs and budgets.",
+        "We offer roadways shipping methods including Full Truckload, Less Than Truckload, and Expedited Shipping.",
     },
     {
       id: 3,
-      question: "Q. Do you provide international shipping?",
+      question: "Q. Do you provide PAN India Logistics and Courier Both?",
       answer:
-        "Yes, we provide international shipping to over 150 countries, ensuring that your goods are delivered safely and on time, no matter where you are.",
+        "Yes, we provide PAN India logistics and courier services with reliable and timely delivery.",
     },
     {
       id: 4,
