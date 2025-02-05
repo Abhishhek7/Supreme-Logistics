@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ChooseImg from '../assets/choose2.jpg';  // Ensure you have a relevant image
+import ChooseImg from "../assets/Choose2.jpg";  // Ensure you have a relevant image
 import { FaTruck, FaTools, FaBusinessTime, FaNetworkWired, FaClipboardCheck, FaShippingFast, FaWarehouse } from 'react-icons/fa';
 
 const ChooseUs = () => {
