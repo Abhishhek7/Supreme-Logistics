@@ -50,7 +50,7 @@ const ChooseUs = () => {
       <div className="bg-gradient-to-r from-white to-gray-200 py-20 px-6 sm:px-8 lg:px-12 text-white">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h2
-            className="text-4xl font-extrabold text-gray-800 mb-8"
+            className="text-4xl font-extrabold text-blue-600 mb-8"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
@@ -67,35 +67,80 @@ const ChooseUs = () => {
             At <strong>Supreme Logistics</strong>, we offer holistic logistics solutions across India, specializing in a wide range of services designed to meet all your operational needs.
           </motion.p>
 
-          {/* Service Cards with Hover Animations */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            {[ 
-              { name: "Transportation", icon: <FaTruck size={40} /> },
-              { name: "ATM Shifting", icon: <FaTools size={40} /> },
-              { name: "Grouting/De-Grouting", icon: <FaBusinessTime size={40} /> },
-              { name: "Repair and Maintenance", icon: <FaTools size={40} /> },
-              { name: "Dismantling", icon: <FaNetworkWired size={40} /> },
-              { name: "Network Management", icon: <FaClipboardCheck size={40} /> },
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-100 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 hover:shadow-2xl"
-              >
-                <div className="text-center text-blue-600 mb-4">
-                  {service.icon}
-                </div>
-                <div className="text-2xl font-semibold text-gray-800 mb-4">{service.name}</div>
-                <p className="text-gray-600">
-                  Specialized solutions in {service.name.toLowerCase()} to ensure quality and efficiency.
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1, delay: 0.4 }}
+>
+  {/* Transportation */}
+  <motion.div className="bg-gray-100 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
+    <div className="text-center text-blue-600 mb-4">
+      <FaTruck size={40} />
+    </div>
+    <div className="text-2xl font-semibold text-gray-800 mb-4">Transportation</div>
+    <p className="text-gray-600">
+    Seamless nationwide delivery solutions.
+    </p>
+  </motion.div>
+
+  {/* ATM Shifting */}
+  <motion.div className="bg-gray-100 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
+    <div className="text-center text-blue-600 mb-4">
+      <FaTools size={40} />
+    </div>
+    <div className="text-2xl font-semibold text-gray-800 mb-4">ATM Shifting</div>
+    <p className="text-gray-600">
+    Secure and efficient ATM relocations.
+    </p>
+  </motion.div>
+
+  {/* Grouting/De-Grouting */}
+  <motion.div className="bg-gray-100 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
+    <div className="text-center text-blue-600 mb-4">
+      <FaBusinessTime size={40} />
+    </div>
+    <div className="text-2xl font-semibold text-gray-800 mb-4">Grouting/De-Grouting</div>
+    <p className="text-gray-600">
+    Specialized solutions for structural integrity.
+
+    </p>
+  </motion.div>
+
+  {/* Repair and Maintenance */}
+  <motion.div className="bg-gray-100 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
+    <div className="text-center text-blue-600 mb-4">
+      <FaTools size={40} />
+    </div>
+    <div className="text-2xl font-semibold text-gray-800 mb-4">Repair and Maintenance</div>
+    <p className="text-gray-600">
+    Extending the lifespan of assets.
+    </p>
+  </motion.div>
+
+  {/* Dismantling */}
+  <motion.div className="bg-gray-100 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
+    <div className="text-center text-blue-600 mb-4">
+      <FaNetworkWired size={40} />
+    </div>
+    <div className="text-2xl font-semibold text-gray-800 mb-4">Dismantling</div>
+    <p className="text-gray-600">
+    Safe and systematic machinery breakdown.
+    </p>
+  </motion.div>
+
+  {/* Network Management */}
+  <motion.div className="bg-gray-100 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
+    <div className="text-center text-blue-600 mb-4">
+      <FaClipboardCheck size={40} />
+    </div>
+    <div className="text-2xl font-semibold text-gray-800 mb-4">Network Management</div>
+    <p className="text-gray-600">
+    Reliable communication solutions.
+    </p>
+  </motion.div>
+</motion.div>
+
 
           {/* Highlighted Benefits Section */}
           <motion.div
@@ -110,7 +155,7 @@ const ChooseUs = () => {
 
             <div className="flex flex-wrap justify-center space-x-6">
               {[
-                "Commitment to Excellence",
+                "AMC and FLM Management",
                 "Best-in-Class Tracking Systems",
                 "Easy Transportation Solutions",
                 "Unparalleled Safety and Security",
