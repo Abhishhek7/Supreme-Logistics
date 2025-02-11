@@ -39,9 +39,10 @@ const Navbar = () => {
               alt="Logo"
               className="h-14 w-14 shadow-lg p-1 "
             />
-            <span className="text-2xl font-bold text-blue-600" style={{ fontFamily: 'Roboto, sans-serif' }}>
-              SUPREME LOGISTICS
-            </span>
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600" style={{ fontFamily: 'Roboto, sans-serif' }}>
+  SUPREME LOGISTICS SOLUTIONS
+</span>
+
           </Link>
         </div>
 

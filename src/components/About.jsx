@@ -52,7 +52,7 @@ const About = () => {
               Delivering Excellence in Logistics
             </h2>
             <p className="text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-300 mb-8">
-              At <span className="font-semibold">Supreme Logistics</span>, we specialize in reliable and efficient delivery solutions. From same-day deliveries to managing supply chains, we ensure smooth, fast, and secure logistics across the country.
+              At <span className="font-semibold">Supreme Logistics Solutions</span>, we specialize in reliable and efficient delivery solutions. From same-day deliveries to managing supply chains, we ensure smooth, fast, and secure logistics across the country.
             </p>
             <div>
   <Link

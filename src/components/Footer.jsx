@@ -8,7 +8,7 @@ const Footer = () => {
       <div className='container mx-auto px-4'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           <div>
-            <h2 className='text-2xl font-bold mb-4'>SUPREME LOGISTICS</h2>
+            <h2 className='text-2xl font-bold mb-4'>SUPREME LOGISTICS SOLUTIONS</h2>
             <p>Fast & Reliable Logistics.</p>
           </div>
           <div>
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
         </div>
         <div className='flex justify-between mt-8 border-t border-gray-700 pt-4'>
-        <p>&copy; {new Date().getFullYear()} SUPREME LOGISTICS. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} SUPREME LOGISTICS SOLUTIONS. All rights reserved.</p>
 
           
         </div>
